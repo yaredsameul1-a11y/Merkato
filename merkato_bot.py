@@ -39,8 +39,13 @@ if not SUPPORT_USERNAMES:
     SUPPORT_USERNAMES = ["Jatech_support"]
 
 DB_FILE = os.getenv("DB_PATH", "/data/rental_bot.db")
-if not os.path.exists("/data") and not os.path.isabs(DB_FILE):
-    DB_FILE = "rental_bot.db"
+
+logging.basicConfig(
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    level=logging.INFO
+)
+logger = logging.getLogger(__name__)
+
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
