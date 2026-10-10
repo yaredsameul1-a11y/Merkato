@@ -120,6 +120,9 @@ PHONE_REGEX = re.compile(r"(?:\+251|0)9\d{8}")
 # ---------- Database Helper Functions ----------
 
 def get_db():
+    db_dir = os.path.dirname(DB_FILE)
+    if db_dir:
+        os.makedirs(db_dir, exist_ok=True)
     conn = sqlite3.connect(DB_FILE)
     conn.row_factory = sqlite3.Row
     return conn
